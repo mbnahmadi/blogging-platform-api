@@ -37,11 +37,8 @@ A simple Django-based API that provides Create, Read, Update, Delete (CRUD) oper
 
 ### Example: Creating a resource
 
-Example:
-    ```bash
-    POST /blog/create-post/
-
 Request:
+
 {
     "title": "string",
     "content": "string",
@@ -55,9 +52,7 @@ Request:
 
 You can search for post by specific fields.
 
-Example:
-    ```bash
-    GET /api/resource/?search=example
+GET /api/resource/?search=example
 
 
 ## API Documentation
