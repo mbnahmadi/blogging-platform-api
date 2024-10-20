@@ -16,6 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import Create_post,Get_all_posts,Get_post,Delete_post,Update_post,SearchView
 
 urlpatterns = [
+    path('create-post/' , Create_post.as_view(), name="create-post"),
+    path('get-all-posts/' , Get_all_posts.as_view(), name="get-all-post"),
+    path('get-post/<str:pk>/' , Get_post.as_view(), name="get-post"),
+    path('delete-post/<str:pk>/' , Delete_post.as_view(), name="delete-post"),
+    path('update-post/<str:pk>/' , Update_post.as_view(), name="update-post"),
+    path('search/' , SearchView.as_view(), name="search"),
+
 ]
