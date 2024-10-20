@@ -5,9 +5,7 @@ A simple Django-based API that provides Create, Read, Update, Delete (CRUD) oper
 ## Prerequisites
 
 - Python 3.x
-- Django REST Framework
 - PostgreSQL (or any database you use)
-- drf_yasg (for API documentation)
 
 
 ## Installation
@@ -39,18 +37,18 @@ A simple Django-based API that provides Create, Read, Update, Delete (CRUD) oper
 
 ### Example: Creating a resource
 
-```bash
-POST /blog/create-post/
+Example:
+    ```bash
+    POST /blog/create-post/
 
 Request:
-
 {
-  "title": "string",
-  "content": "string",
-  "category": "string",
-  "tags": [
-    "string"
-  ]
+    "title": "string",
+    "content": "string",
+    "category": "string",
+    "tags": [
+        "string"
+    ]
 }
 
 ### Search Functionality
@@ -58,8 +56,8 @@ Request:
 You can search for post by specific fields.
 
 Example:
-```bash
-GET /api/resource/?search=example
+    ```bash
+    GET /api/resource/?search=example
 
 
 ## API Documentation
