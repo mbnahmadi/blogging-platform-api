@@ -61,3 +61,5 @@ The API documentation is available at `/swagger/` for Swagger UI and `/redoc/` f
 
 Simply navigate to:
 http://localhost:8000/swagger/
+
+https://roadmap.sh/projects/blogging-platform-api
