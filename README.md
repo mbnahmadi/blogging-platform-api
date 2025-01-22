@@ -63,3 +63,6 @@ Simply navigate to:
 http://localhost:8000/swagger/
 
 https://roadmap.sh/projects/blogging-platform-api
+
+
+blogdrf app created for writing classes in views.py with genericsView

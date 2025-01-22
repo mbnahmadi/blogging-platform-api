@@ -6,5 +6,3 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = PostsModel
         fields = '__all__'
-
-    # def validate(self,data):

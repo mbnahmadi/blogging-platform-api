@@ -4,6 +4,7 @@ from .models import PostsModel
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+# from rest_framework.generics import Retre
 from drf_yasg.utils import swagger_auto_schema 
 from drf_yasg import openapi
 from django.db.models import Q
@@ -51,24 +52,45 @@ class Delete_post(APIView):
         
 
 class Update_post(APIView):
+    '''
+    Handles full update of the post (replaces all fields).
+    '''
     @swagger_auto_schema(request_body=PostSerializer)
     def put(self,request,pk):
         try:
             posts = PostsModel.objects.get(pk=pk)
         except PostsModel.DoesNotExist:
             return Response({'error':'post not found'},status=status.HTTP_404_NOT_FOUND)    
-        serializer = PostSerializer(data=request.data , instance=posts)
+        serializer = PostSerializer(posts, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response({'message':'post update successfuly'} ,status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+class UpdatePostPatch(APIView):
+    '''
+    Handles partial update of the post (updates specific fields).
+    '''
+    @swagger_auto_schema(request_body=PostSerializer)
+    def put(self,request,pk):
+        try:
+            posts = PostsModel.objects.get(pk=pk)
+        except PostsModel.DoesNotExist:
+            return Response({'error':'post not found'},status=status.HTTP_404_NOT_FOUND)  
+          
+        serializer = PostSerializer(posts, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'message':'post update successfuly'} ,status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_400_BAD_REQUEST)    
 
     
 
 class SearchView(APIView):
     @swagger_auto_schema(
         manual_parameters=[openapi.Parameter('term', openapi.IN_QUERY, description="Search term for title, content, and category", type=openapi.TYPE_STRING)]
-        )
+    )
     
     def get(self,requset):
         term = requset.query_params.get('term')
@@ -84,6 +106,7 @@ class SearchView(APIView):
 
         serializer = PostSerializer(posts , many=True)
         return Response(serializer.data)        
+
 
 
 
