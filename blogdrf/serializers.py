@@ -15,4 +15,4 @@ class BlogPostSerializer(serializers.ModelSerializer):
     # category = CategorySerializer(many=True)
     class Meta:
         model = BlogPostModel
-        fields = ["title", "content", "category", "tags", "created_at", "updated_at"]
+        fields = ["id", "title", "content", "category", "tags", "created_at", "updated_at"]

@@ -27,6 +27,7 @@ class BlogPostModel(models.Model):
     class Meta:
         verbose_name = "post"
         verbose_name_plural = "posts"
+        ordering = ("id",)
 
     def __str__(self):
         return f"{self.pk}"    

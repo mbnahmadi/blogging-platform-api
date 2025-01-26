@@ -16,9 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import CreateBlogPostView
+from .views import (
+    CreateBlogPostView, 
+    UpdateBlogPostView, 
+    DeleteBlogPost, 
+    RetrieveBlogPost, 
+    GetAllBlogPost
+    )
+
 
 app_nmae = 'blogdrf'
 urlpatterns = [
     path('create', CreateBlogPostView.as_view(), name='CreateBlogPostView'),
+    path('update/<int:pk>', UpdateBlogPostView.as_view(), name='UpdateBlogPostView'),
+    path('delete/<int:pk>', DeleteBlogPost.as_view(), name='DeleteBlogPost'),
+    path('retrieve/<int:pk>', RetrieveBlogPost.as_view(), name='RetrieveBlogPost'),
+    path('getallpost/', GetAllBlogPost.as_view(), name='GetAllBlogPost'),
 ]
