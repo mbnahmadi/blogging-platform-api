@@ -61,3 +61,7 @@ class GetAllBlogPost(generics.ListAPIView):
     #         queryset = queryset.filter(category=category)
     #     return queryset    
         
+
+class GetAllCategoryView(generics.ListAPIView):
+    queryset = CategoryModel.objects.all()
+    serializer_class = CategorySerializer        

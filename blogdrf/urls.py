@@ -21,7 +21,8 @@ from .views import (
     UpdateBlogPostView, 
     DeleteBlogPost, 
     RetrieveBlogPost, 
-    GetAllBlogPost
+    GetAllBlogPost,
+    GetAllCategoryView
     )
 
 
@@ -32,4 +33,5 @@ urlpatterns = [
     path('delete/<int:pk>', DeleteBlogPost.as_view(), name='DeleteBlogPost'),
     path('retrieve/<int:pk>', RetrieveBlogPost.as_view(), name='RetrieveBlogPost'),
     path('getallpost/', GetAllBlogPost.as_view(), name='GetAllBlogPost'),
+    path('categories/', GetAllCategoryView.as_view(), name='GetAllCategory'),
 ]
